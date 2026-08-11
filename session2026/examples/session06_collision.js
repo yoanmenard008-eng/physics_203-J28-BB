@@ -170,12 +170,14 @@ function resolveBallCollision(ballA, ballB) {
 
     // 2. Impulsion (Formule du cours)
     // const reducedMass = ??;
+    const reducedMass = (mA*mB)/(mA+mB);
     // const j = ??;
+    const j = (-(1+e)*vRel)*reducedMass;
 
     // 3. Application
-    // const impulse = ??;
-    // velA.addScaledVector(impulse, 1 / mA);
-    // velB.addScaledVector(impulse, -1 / mB);
+     const impulse = j;
+     velA.addScaledVector(impulse, 1 / mA);
+     velB.addScaledVector(impulse, -1 / mB);
     // --- FIN ZONE ÉTUDIANT ---
 
     // Correction Position

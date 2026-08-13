@@ -44,25 +44,37 @@ class SpatialGrid {
         this.cells.clear();
     }
 
+    insert(obj) {
+    const key = this.getKey(obj.position);
+    if (!this.cells.has(key)) this.cells.set(key, []);
+    this.cells.get(key).push(obj);
+  }
+  getNeighbors(pos) {
+    const cx = Math.floor(pos.x / this.cellSize);
+    const cy = Math.floor(pos.y / this.cellSize);
+    const cz = Math.floor(pos.z / this.cellSize);
+    const neighbors = [];
+    for (let dx = -1; dx <= 1; dx++)
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dz = -1; dz <= 1; dz++) {
+          const cell = this.cells.get(`${cx+dx},${cy+dy},${cz+dz}`);
+          if (cell) neighbors.push(...cell);
+        }
+    return neighbors;
+  }
+
     // --- ZONE ÉTUDIANT (A compléter) ---
 
     // 1. insert(obj) : ranger un objet dans la bonne cellule
     //    - Calculer la clé avec getKey(obj.position)
     //    - Si la cellule n'existe pas, la créer (tableau vide)
     //    - Ajouter l'objet au tableau de la cellule
-    insert(obj) {
-        // [À COMPLÉTER]
-    }
 
     // 2. getNeighbors(pos) : récupérer les objets dans la cellule + les 26 voisines
     //    - Calculer les coordonnées de cellule (cx, cy, cz)
     //    - Boucler sur dx, dy, dz de -1 à +1 (27 combinaisons)
     //    - Pour chaque cellule voisine, récupérer son contenu
     //    - Retourner le tableau des voisins
-    getNeighbors(pos) {
-        // [À COMPLÉTER]
-        return balls; // Par défaut : brute force (tout retourner)
-    }
 
     // --- FIN ZONE ÉTUDIANT ---
 }
@@ -74,6 +86,9 @@ class SpatialGrid {
 // Renvoie true si deux AABB se chevauchent sur les 3 axes
 // Une AABB est définie par { min: Vector3, max: Vector3 }
 function aabbOverlap(aabbA, aabbB) {
+    if (a.max.x < b.min.x || b.max.x < a.min.x) return false;
+    if (a.max.y < b.min.y || b.max.y < a.min.y) return false;
+    if (a.max.z < b.min.z || b.max.z < a.min.z) return false;
     // [À COMPLÉTER]
     // Indice : il y a chevauchement si les intervalles se croisent sur
     // TOUS les axes (X, Y, Z). Si un seul axe ne se chevauche pas, return false.

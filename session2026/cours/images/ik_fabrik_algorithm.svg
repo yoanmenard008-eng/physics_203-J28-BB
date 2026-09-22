@@ -1,0 +1,107 @@
+<svg width="760" height="460" viewBox="0 0 760 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ============================================================
+       FABRIK — session 16, Partie 7
+       Un bras à 3 segments, cible à (2.2, 1.2).
+       Panneau 1 : passe FORWARD (extrémité → base).
+       Panneau 2 : passe BACKWARD (base → extrémité).
+       Poses calculées avec le vrai algorithme (voir solution).
+       ============================================================ -->
+  <defs>
+    <marker id="arrowOrange2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E8A33D"/>
+    </marker>
+    <marker id="arrowRed2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A02020"/>
+    </marker>
+  </defs>
+
+  <!-- Séparateur -->
+  <line x1="395" y1="50" x2="395" y2="340" stroke="#DDDDDD" stroke-width="1"/>
+
+  <!-- ================= PANNEAU 1 : passe FORWARD ================= -->
+  <text x="222" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Passe FORWARD — de l'extrémité vers la base</text>
+
+  <!-- pose AVANT (gris) : bras droit -->
+  <polyline points="50,310 50,230 50,150 50,70" stroke="#AAAAAA" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <circle cx="50" cy="230" r="4" fill="#AAAAAA"/>
+  <circle cx="50" cy="150" r="4" fill="#AAAAAA"/>
+
+  <!-- l'extrémité est d'abord placée sur la cible -->
+  <line x1="58" y1="78" x2="210" y2="196" stroke="#A02020" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#arrowRed2)"/>
+
+  <!-- pose APRÈS FORWARD (bleu) -->
+  <polyline points="54,295 77,218 151,187 226,214" stroke="#4A90D9" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <circle cx="77"  cy="218" r="5" fill="#2266AA"/>
+  <circle cx="151" cy="187" r="5" fill="#2266AA"/>
+
+  <!-- badges : ordre de traitement (de l'extrémité vers la base) -->
+  <circle cx="226" cy="214" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="226" y="218" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">1</text>
+  <circle cx="151" cy="187" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="151" y="191" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">2</text>
+  <circle cx="77" cy="218" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="77" y="222" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">3</text>
+  <circle cx="54" cy="295" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="54" y="299" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">4</text>
+
+  <!-- la base a dérivé -->
+  <circle cx="54" cy="295" r="15" stroke="#A02020" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+  <text x="76" y="288" font-family="sans-serif" font-size="13" fill="#A02020">la base a dérivé !</text>
+
+  <!-- cible : l'extrémité est dessus -->
+  <circle cx="226" cy="214" r="10" stroke="#D44" stroke-width="3" fill="none"/>
+
+  <!-- ================= PANNEAU 2 : passe BACKWARD ================= -->
+  <text x="572" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Passe BACKWARD — de la base vers l'extrémité</text>
+
+  <!-- pose AVANT (gris) : résultat du FORWARD -->
+  <polyline points="424,295 447,218 521,187 596,214" stroke="#AAAAAA" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <circle cx="447" cy="218" r="4" fill="#AAAAAA"/>
+  <circle cx="521" cy="187" r="4" fill="#AAAAAA"/>
+  <circle cx="596" cy="214" r="4" fill="#AAAAAA"/>
+
+  <!-- la base est ramenée à l'origine -->
+  <line x1="427" y1="290" x2="422" y2="322" stroke="#E8A33D" stroke-width="2.5" marker-end="url(#arrowOrange2)"/>
+  <text x="440" y="330" font-family="sans-serif" font-size="13" fill="#B36B00">base remise à l'origine</text>
+
+  <!-- pose APRÈS BACKWARD (vert) -->
+  <polyline points="420,310 443,233 511,192 589,212" stroke="#2E8B57" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <circle cx="443" cy="233" r="5" fill="#1F6640"/>
+  <circle cx="511" cy="192" r="5" fill="#1F6640"/>
+  <circle cx="589" cy="212" r="5" fill="#1F6640"/>
+
+  <!-- longueurs préservées -->
+  <text x="425" y="272" font-family="serif" font-size="15" font-style="italic" fill="#1F6640">L</text>
+  <text x="470" y="216" font-family="serif" font-size="15" font-style="italic" fill="#1F6640">L</text>
+  <text x="545" y="196" font-family="serif" font-size="15" font-style="italic" fill="#1F6640">L</text>
+
+  <!-- badges : ordre de traitement (de la base vers l'extrémité) -->
+  <circle cx="420" cy="310" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="420" y="314" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">1</text>
+  <circle cx="443" cy="233" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="443" y="237" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">2</text>
+  <circle cx="511" cy="192" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="511" y="196" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">3</text>
+  <circle cx="589" cy="212" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="589" y="216" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">4</text>
+
+  <!-- cible + erreur résiduelle -->
+  <circle cx="596" cy="214" r="10" stroke="#D44" stroke-width="3" fill="none"/>
+  <circle cx="596" cy="214" r="2.5" fill="#D44"/>
+  <text x="614" y="238" font-family="serif" font-size="15" font-style="italic" fill="#A02020">ε ≈ 0.09</text>
+
+  <!-- ================= LÉGENDE ================= -->
+  <line x1="40" y1="392" x2="80" y2="392" stroke="#AAAAAA" stroke-width="3"/>
+  <text x="88" y="397" font-family="sans-serif" font-size="13" fill="#555">avant la passe</text>
+
+  <line x1="200" y1="392" x2="240" y2="392" stroke="#4A90D9" stroke-width="4"/>
+  <text x="248" y="397" font-family="sans-serif" font-size="13" fill="#555">après FORWARD</text>
+
+  <line x1="370" y1="392" x2="410" y2="392" stroke="#2E8B57" stroke-width="4"/>
+  <text x="418" y="397" font-family="sans-serif" font-size="13" fill="#555">après BACKWARD</text>
+
+  <circle cx="560" cy="392" r="8" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="576" y="397" font-family="sans-serif" font-size="13" fill="#555">ordre de traitement</text>
+
+  <text x="40" y="430" font-family="sans-serif" font-size="13" font-style="italic" fill="#777">Chaque passe préserve les longueurs L des segments. Une itération complète (forward + backward) suffit ici à ε ≈ 0.09.</text>
+</svg>

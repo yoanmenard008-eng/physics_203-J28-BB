@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 16 — IK</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; }
+        canvas { display: block; }
+        #hud {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+            color: #00ffcc; font-family: 'Courier New', Courier, monospace;
+            font-size: 16px; text-shadow: 0 0 10px #00ffcc;
+            pointer-events: none; text-align: center; white-space: pre;
+        }
+        #hint {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            color: #ffffff88; font-family: 'Courier New', Courier, monospace;
+            font-size: 14px; pointer-events: none; text-align: center;
+        }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.185.1/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="hud">Chargement…</div>
+    <div id="hint">TEMPLATE v3 — ccdSolve() et fabrikSolve() sont à compléter · La cible suit la souris · Version working : session16_ik_solution.html</div>
+    <script type="module" src="session16_ik.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<svg width="960" height="460" viewBox="0 0 960 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ============================================================
+       CCD (Cyclic Coordinate Descent) — session 16, Partie 6
+       Un bras à 3 segments, cible à (2.2, 1.2).
+       Trois étapes d'UNE passe : de l'extrémité vers la base.
+       Poses calculées avec le vrai algorithme (voir solution).
+       ============================================================ -->
+  <defs>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E8A33D"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A02020"/>
+    </marker>
+  </defs>
+
+  <!-- Séparateurs de panneaux -->
+  <line x1="355" y1="50" x2="355" y2="340" stroke="#DDDDDD" stroke-width="1"/>
+  <line x1="685" y1="50" x2="685" y2="340" stroke="#DDDDDD" stroke-width="1"/>
+
+  <!-- ================= PANNEAU 1 : dernière articulation ================= -->
+  <text x="185" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Étape 1 — la dernière articulation</text>
+
+  <!-- pose AVANT (gris) : bras droit -->
+  <polyline points="40,300 40,220 40,140 40,60" stroke="#AAAAAA" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <circle cx="40" cy="220" r="4" fill="#AAAAAA"/>
+  <circle cx="40" cy="60"  r="4" fill="#AAAAAA"/>
+
+  <!-- ligne de visée : pivot → cible -->
+  <line x1="40" y1="140" x2="216" y2="204" stroke="#A02020" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- arc de rotation : de « vers le haut » vers « vers la cible » -->
+  <path d="M 40,106 A 34 34 0 0 1 72,128" stroke="#E8A33D" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  <text x="52" y="96" font-family="serif" font-size="17" font-style="italic" fill="#B36B00">θ</text>
+
+  <!-- pose APRÈS (bleu) : seule l'extrémité a pivoté autour du joint 2 -->
+  <polyline points="40,300 40,220 40,140 115,167" stroke="#4A90D9" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <circle cx="40"  cy="300" r="5" fill="#2266AA"/>
+  <circle cx="40"  cy="220" r="5" fill="#2266AA"/>
+  <circle cx="115" cy="167" r="5" fill="#2266AA"/>
+  <!-- pivot (articulation ajustée) -->
+  <circle cx="40" cy="140" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+
+  <!-- cible -->
+  <circle cx="216" cy="204" r="10" stroke="#D44" stroke-width="3" fill="none"/>
+  <circle cx="216" cy="204" r="2.5" fill="#D44"/>
+
+  <!-- ================= PANNEAU 2 : articulation du milieu ================= -->
+  <text x="515" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Étape 2 — celle du milieu</text>
+
+  <!-- pose AVANT (gris) : résultat de l'étape 1 -->
+  <polyline points="370,300 370,220 370,140 445,167" stroke="#AAAAAA" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <circle cx="370" cy="300" r="4" fill="#AAAAAA"/>
+  <circle cx="370" cy="140" r="4" fill="#AAAAAA"/>
+  <circle cx="445" cy="167" r="4" fill="#AAAAAA"/>
+
+  <!-- ligne de visée : pivot → cible -->
+  <line x1="370" y1="220" x2="546" y2="204" stroke="#A02020" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- pose APRÈS (bleu) : la chaîne après joint 1 pivote -->
+  <polyline points="370,300 370,220 410,151 461,212" stroke="#4A90D9" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <circle cx="370" cy="300" r="5" fill="#2266AA"/>
+  <circle cx="410" cy="151" r="5" fill="#2266AA"/>
+  <circle cx="461" cy="212" r="5" fill="#2266AA"/>
+  <!-- pivot -->
+  <circle cx="370" cy="220" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+
+  <!-- cible -->
+  <circle cx="546" cy="204" r="10" stroke="#D44" stroke-width="3" fill="none"/>
+  <circle cx="546" cy="204" r="2.5" fill="#D44"/>
+
+  <!-- ================= PANNEAU 3 : la base ================= -->
+  <text x="845" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Étape 3 — la base</text>
+
+  <!-- pose AVANT (gris) : résultat de l'étape 2 -->
+  <polyline points="700,300 700,220 740,151 791,212" stroke="#AAAAAA" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <circle cx="700" cy="220" r="4" fill="#AAAAAA"/>
+  <circle cx="740" cy="151" r="4" fill="#AAAAAA"/>
+  <circle cx="791" cy="212" r="4" fill="#AAAAAA"/>
+
+  <!-- ligne de visée : pivot → cible -->
+  <line x1="700" y1="300" x2="876" y2="204" stroke="#A02020" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- pose APRÈS (bleu) : tout le bras pivote autour de la base -->
+  <polyline points="700,300 721,223 778,166 812,239" stroke="#4A90D9" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <circle cx="721" cy="223" r="5" fill="#2266AA"/>
+  <circle cx="778" cy="166" r="5" fill="#2266AA"/>
+  <circle cx="812" cy="239" r="5" fill="#2266AA"/>
+  <!-- pivot : la base -->
+  <circle cx="700" cy="300" r="9" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+
+  <!-- cible + erreur restante -->
+  <circle cx="876" cy="204" r="10" stroke="#D44" stroke-width="3" fill="none"/>
+  <circle cx="876" cy="204" r="2.5" fill="#D44"/>
+  <line x1="812" y1="239" x2="868" y2="208" stroke="#A02020" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrowRed)"/>
+  <text x="850" y="248" font-family="serif" font-size="15" font-style="italic" fill="#A02020">ε</text>
+
+  <!-- ================= LÉGENDE ================= -->
+  <line x1="40" y1="392" x2="80" y2="392" stroke="#AAAAAA" stroke-width="3"/>
+  <text x="88" y="397" font-family="sans-serif" font-size="13" fill="#555">pose avant</text>
+
+  <line x1="190" y1="392" x2="230" y2="392" stroke="#4A90D9" stroke-width="4"/>
+  <text x="238" y="397" font-family="sans-serif" font-size="13" fill="#555">pose après</text>
+
+  <circle cx="360" cy="392" r="8" fill="#E8A33D" stroke="#A66A00" stroke-width="2"/>
+  <text x="376" y="397" font-family="sans-serif" font-size="13" fill="#555">articulation ajustée (pivot)</text>
+
+  <circle cx="580" cy="392" r="9" stroke="#D44" stroke-width="3" fill="none"/>
+  <text x="597" y="397" font-family="sans-serif" font-size="13" fill="#555">cible</text>
+
+  <text x="40" y="430" font-family="sans-serif" font-size="13" font-style="italic" fill="#777">Une seule passe est montrée — on répète (extrémité → base) jusqu'à convergence. Ici ε ≈ 0.9 après une passe.</text>
+</svg>
